@@ -1,0 +1,661 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta content="width=device-width, initial-scale=1.0" name="viewport">
+    <title>BIG POS</title>
+    <meta content="" name="description">
+    <meta content="" name="keywords">
+    <!-- Favicons -->
+    <!-- <link href="https://bigpos.com/wp-content/uploads/2021/08/bigpos-logo-60x60-1.png" rel="icon"> -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <!-- Google Fonts -->
+    <link href="https://fonts.gstatic.com" rel="preconnect">
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Nunito:300,300i,400,400i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i" rel="stylesheet">
+    <!-- Vendor CSS Files -->
+    <link href="assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+    <link href="assets/vendor/bootstrap-icons/bootstrap-icons.css" rel="stylesheet">
+    <script src="https://code.jquery.com/jquery-3.5.1.js"></script>
+    <!--   <link href="assets/vendor/quill/quill.snow.css" rel="stylesheet"><link href="assets/vendor/quill/quill.bubble.css" rel="stylesheet"><link href="assets/vendor/remixicon/remixicon.css" rel="stylesheet"><link href="assets/vendor/simple-datatables/style.css" rel="stylesheet"> -->
+    <!-- Template Main CSS File -->
+    <link href="assets/css/style.css" rel="stylesheet">
+    <!-- =======================================================
+  * Template Name: NiceAdmin - v2.2.2
+  * Template URL: https://bootstrapmade.com/nice-admin-bootstrap-admin-html-template/
+  * Author: BootstrapMade.com
+  * License: https://bootstrapmade.com/license/
+  ======================================================== -->
+  </head>
+  <body>
+    <div class="tablet">
+      <!-- ======= Header ======= -->
+      <header id="header" class="header fixed-top d-flex align-items-center">
+        <div class="d-flex align-items-center justify-content-between">
+          <!--  <a href="index.html" class="logo d-flex align-items-center"><img src="assets/img/logo.png" alt=""><span class="d-none d-lg-block">NiceAdmin</span></a> -->
+          <i onclick="MenubtnClicked()" style="font-weight: bolder;font-size: 25px" class="bi bi-list toggle-sidebar-btn"></i>
+
+          <i id="TableIcon" class="TableIcon bi bi-stack"></i>
+          <h3 id="tNumber" class="tableNumber"></h3>
+        </div>
+                    <div id="myModal8" class="modal8">
+          
+           <img width="100px" height="100px" src="assets/img/instruction.gif">
+          
+        </div>
+        <!-- End Logo -->
+        <select id="categoryList" onload="console.log('Loaded!')"  class="form-select cat-list" id="floatingSelect" aria-label="Floating label select example">
+          <option value="0">Select Category</option>
+          <option selected="" value="1">Main Dishes</option>
+          <option value="2">Side Dishes</option>
+          <option value="3">Hot Drinks</option>
+          <option value="4">Cold Drinks</option>
+          <option value="5">Desserts</option>
+        </select>
+
+
+        <div style="right: 344px;left: 440px;position: fixed; top:-12px;" class="mt-4 search-bar">
+          <form class="search-form" method="POST" action="#">
+            <input type="text" autocomplete="off" name="query" placeholder="Search" title="Enter search keyword">
+            <button type="submit" title="Search"></button>
+          </form>
+        </div>
+        <!-- <i class="bi bi-search"></i> -->
+        <!-- End Search Bar -->
+
+    
+
+
+        <a id="btnDeleteClicked">
+          <i class="dltBtnStyle bi bi-trash"></i>
+          <!-- <i class="bi bi-bell"></i><span class="badge bg-primary badge-number">4</span> -->
+        </a>
+        <!-- End Notification Icon -->
+        <nav class="header-nav ms-auto">
+          <ul class="d-flex align-items-center">
+            <li class="nav-item d-block d-lg-none">
+              <a class="nav-link nav-icon search-bar-toggle " href="#">
+                <i class="bi bi-search"></i>
+              </a>
+            </li>
+            <!-- End Search Icon-->
+            <li class="nav-item dropdown">
+              <a class="nav-link nav-icon">
+                <!--    <i onclick="show(this)" class="fa fa-thumbs-up"></i> -->
+                <img onclick="show()" id="toggleImage" width="35px" height="40px" src="assets/img/dineIn.png">
+                <!--  <span class="badge bg-primary badge-number">4</span> -->
+              </a>
+              <!-- End Notification Icon -->
+            </li>
+            <!-- End Notification Nav -->
+            <li class="nav-item dropdown">
+              <a class="nav-link nav-icon">
+                <!--  <i class="bi bi-chat-left-text"></i><span class="badge bg-success badge-number">3</span> -->
+                <i id="LightIcon" style="font-size: 28px" class="bi bi-lightning-fill"></i>
+                
+              </a>
+              <a class="notification">
+              <i id="cartIcon" style="font-size: 28px;margin-top: -15px;" class="bi bi-cart-fill"></i>
+               <span id="badgeId" class="badge"></span>
+              </a>
+              <!-- End Messages Icon -->
+            </li>
+            <!-- End Messages Nav -->
+            <li class="nav-item dropdown pe-3">
+              <a class="nav-link nav-profile d-flex align-items-center pe-0" href="#" data-bs-toggle="dropdown">
+                <!--   <img src="assets/img/profile-img.jpg" alt="Profile" class="rounded-circle"><span class="d-none d-md-block dropdown-toggle ps-2">K. Anderson</span> -->
+                <i style="font-size: 23px;"class="bi bi-three-dots-vertical"></i>
+              </a>
+              <!-- End Profile Iamge Icon -->
+              <ul class="dropdown-menu dropdown-menu-end dropdown-menu-arrow profile">
+                <li>
+                  <hr class="dropdown-divider">
+                </li>
+                <li>
+                  <a id="btnSplitClicked" class="dropdown-item d-flex align-items-center" href="#">
+                    <i class="bi bi-shuffle"></i>
+                    <span>Split Order</span>
+                  </a>
+                </li>
+                <li>
+                  <hr class="dropdown-divider">
+                </li>
+                <li>
+                  <a class="dropdown-item d-flex align-items-center" href="#">
+                    <i class="bi bi-record-circle-fill"></i>
+                    <span>Open table</span>
+                  </a>
+                </li>
+              </ul>
+              <!-- End Profile Dropdown Items -->
+            </li>
+            <!-- End Profile Nav -->
+          </ul>
+        </nav>
+        <!-- End Icons Navigation -->
+      </header>
+      <!-- End Header -->
+      <!-- ======= Sidebar ======= -->
+      <aside id="sidebar" class="sidebar">
+        <ul class="sidebar-nav" data-bs-toggle="collapse" id="sidebar-nav">
+          <li class="nav-item">
+            <a class="nav-link" href="#">
+              <i class="bi bi-journal-check"></i>
+              <span>Register</span>
+            </a>
+          </li>
+          <li class="nav-item">
+            <a id="TransactionClicked" href="#" class="nav-link ">
+              <i class="bi bi-arrow-left-right"></i>
+              <span>Transactions</span>
+            </a>
+          </li>
+          <li class="nav-item">
+            <!-- <a onclick="OpenCloseShift()" class="nav-link" href="#"> -->
+            <a class="nav-link" href="#">
+              <i class="bi bi-arrow-left-right"></i>
+              <span id="OpenCloseShiftID">Open Shift</span>
+            </a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link " href="#">
+              <i class="bi bi-arrow-left-right"></i>
+              <span>Shift Report</span>
+            </a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link " href="#">
+              <i class="bi bi-arrow-repeat"></i>
+              <span>Sync</span>
+            </a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link " href="#">
+              <i class="bi bi-box-seam"></i>
+              <span>Track Stock Inventory</span>
+            </a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link " href="#">
+              <i class="bi bi-person-check-fill"></i>
+              <span>Attendance System</span>
+            </a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link " href="#">
+              <i class="bi bi-printer-fill"></i>
+              <span>Printer</span>
+            </a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link " href="#">
+              <i class="bi bi-gear-wide-connected"></i>
+              <span>Settings</span>
+            </a>
+          </li>
+        </ul>
+      </aside>
+      <!-- End Sidebar-->
+      <main id="main" class="main">
+        <section class="section dashboard">
+          <div class="row">
+            <div id="myModal4" class="modal4">
+              <div class="modal-content4">
+                <div class="leftTransactionRCT">
+                  <i style="font-size: 20px" class="CloseTransaction bi bi-caret-left-fill mb-4 mt-4"></i>
+                  <h4 style="text-align: center;" class="mt-4 ml-2">Transactions</h4>
+                  <img width="100%" src="assets/img/TransactionsList.png">
+                  <div style="padding: 0px" class="list-group">
+                    <h5 class="mt-2">Friday,Apr 02</h5>
+                    <a href="#" class="CallRCT list-group-item list-group-item-action active" aria-current="true">
+                      <div class="d-flex justify-content-between">
+                        <h5 class="">10:28 AM</h5>
+                        <medium>
+                          <h3>13:95</h3>
+                        </medium>
+                      </div>
+                      <p style="margin-top: -13px">INVOICE: 0000000021 </p>
+                    </a>
+                    <a href="#" class="list-group-item list-group-item-action" aria-current="true">
+                      <div class="d-flex justify-content-between">
+                        <h5 class="">11:28 AM</h5>
+                        <p style="font-size:14px;font-weight: bold; background: #fd8181;padding: 0px 8px 0px 8px;border-radius: 20px;">Cancelled</p>
+                        <medium>
+                          <h3>15.50</h3>
+                        </medium>
+                      </div>
+                      <p style="margin-top: -13px">INVOICE: 0000000022 </p>
+                    </a>
+                    <a href="#" class="list-group-item list-group-item-action" aria-current="true">
+                      <div class="d-flex justify-content-between">
+                        <h5 class="">12:22 AM</h5>
+                        <p style="font-size:14px;font-weight: bold; background: #fd8181;padding: 0px 8px 0px 8px;border-radius: 20px;">Refunded</p>
+                        <medium>
+                          <h3>10.95</h3>
+                        </medium>
+                      </div>
+                      <p style="margin-top: -13px">INVOICE: 0000000023 </p>
+                    </a>
+                    <a href="#" class="list-group-item list-group-item-action" aria-current="true">
+                      <div class="d-flex justify-content-between">
+                        <h5 class="">13:28 AM</h5>
+                        <medium>
+                          <h3>23.35</h3>
+                        </medium>
+                      </div>
+                      <p style="margin-top: -13px">INVOICE: 0000000024 </p>
+                    </a>
+                    <a href="#" class="list-group-item list-group-item-action" aria-current="true">
+                      <div class="d-flex justify-content-between">
+                        <h5 class="">14:15 AM</h5>
+                        <p style="font-size:14px;font-weight: bold; background: #fd8181;padding: 0px 8px 0px 8px;border-radius: 20px;">Refunded</p>
+                        <medium>
+                          <h3>43.55</h3>
+                        </medium>
+                      </div>
+                      <p style="margin-top: -13px">INVOICE: 0000000025 </p>
+                    </a>
+                  </div>
+                  
+                </div>
+
+
+                <div class="receiptDetails">
+                  <i  class="CloseTransactionRCT arrwStyle bi bi-caret-left-fill mt-4"></i>
+                  <i id="reciept"  class="bi bi-receipt mb-4 mt-4"></i>
+                  <h4 style="text-align: center;" class="mt-4 ml-2">Friday,Apr 01 10:28AM</h4>
+                  <hr>
+                  <h4 style="text-align: center;" class="mt-4 ml-2">13:95</h4>
+                  <div style="text-align: center; color: gray">
+                    <h5 style="margin-top: -13px">0000000021 - Processed by Janice-Lam </h5>
+                    <h5 style="margin-top: -13px">Processed from BIGPOS-T34 </h5>
+                  </div>
+                  <div style="background-color: #dddede;text-align: center;">
+                    <h4>Walk in Customer</h4>
+                  </div>
+                  <div style="height:300px;" class="card-body">
+                    <!-- List group With Checkboxes and radios -->
+                    <ul class="list-group">
+                      <li class="list-group-item">
+                        <div style="display: flex;justify-content: space-between;align-items: center;">
+                          <!--  <input class="form-check-input me-1" type="checkbox" value="" aria-label="..."> -->
+                          <img width="10%" height="4%" src="assets/img/j2.png">
+                          <p>1</p>
+                          <p>Full Cream Milk (2L)</p>
+                          <p>13.95</p>
+                          <p>13.95</p>
+                        </div>
+                      </li>
+                    </ul>
+                    <!-- End List Checkboxes and radios -->
+                  </div>
+                  <div class="rectWalkInCus">
+                    <table style="width: 100%; max-height: 5px" class="table">
+                      <thead>
+                        <tr>
+                          <th scope="col-md-4">SUBTOTAL</th>
+                          <th style="text-align:right">13.95</th>
+                        </tr>
+                        <tr>
+                          <th scope="col-md-4">TAX</th>
+                          <th style="text-align: right" scope="col">0.00</th>
+                        </tr>
+                        <!--                    <tr><th scope="col-md-4">SERVICE CHARGE</th><th id="seriveChargeAmount" style="text-align:right" scope="col"></th></tr><tr><th scope="col-md-4">TAKE AWAY</th><th id="takeAwayAmount"style="text-align:right" scope="col"></th></tr> -->
+                        <tr>
+                          <th scope="col-md-4">GRAND TOTAL</th>
+                          <th style="text-align:right" scope="col">13.95</th>
+                        </tr>
+                        <!--                   <tr><td>Peter</td><td>Griffin</td></tr> -->
+                      </thead>
+                    </table>
+                  </div>
+                  <div style="bottom: 10">
+                    <button  type="button" class="btn btn-outline-primary">Cancel Transaction</button>
+                    <button  type="button" class="btn btn-outline-primary">Refund</button>
+                    
+                  </div>
+                  <div class="card-body">
+                    <div id="myModal5" class="modal5 modal-small">
+                      <div class="modal-content5">
+                        <img class="closeReceipt" src="assets/img/TransactionReceipt.png">
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div id="myModal3" class="modal3">
+              <div class="modal-content3">
+                <div style="display: flex;justify-content:space-between;padding: 15px;font-weight: bold; background: #F2D857">
+                  <h4 style="cursor: pointer;" class="close3">Close</h4>
+                  <h4>Walk-in Customer <span>
+                      <i class="PlusIconStyle bi bi-plus-circle"></i>
+                    </span>
+                  </h4>
+                  <h4 class="SplitPayScreen" style="cursor: pointer">Pay</h4>
+                </div>
+                <div style="height:320px;overflow-y: scroll;" class="card-body">
+                  <!-- List group With Checkboxes and radios -->
+                  <ul id="selectedTable" class="list-group">
+                    <!--  <li class="list-group-item"><div style="display: flex;justify-content: space-between;align-items: center;"><input class="form-check-input me-1" type="checkbox" value="" aria-label="..."><p>1</p><img width="10%" height="8%" src="assets/img/j1.png"><p>1</p><p>20.00</p><p>20.00</p></div></li> -->
+                  </ul>
+                  <!-- End List Checkboxes and radios -->
+                </div>
+                <div style="clear: both"></div>
+                <div id="SplitCalculationDIV" class="SplitCalDivStyle">
+                  <table id="SplitCalculationTable"  class="table SplitCalStyle">
+                    <thead>
+                      <tr>
+                        <th scope="col-md-4">SUBTOTAL</th>
+                        <th style="text-align:right" id="SplitsubtotalAmount">0.00</th>
+                      </tr>
+                      <tr>
+                        <th scope="col-md-4">TAX</th>
+                        <th style="text-align: right" id="SplitgstAmount" scope="col">0.00</th>
+                      </tr>
+                      <!--                    <tr><th scope="col-md-4">SERVICE CHARGE</th><th id="seriveChargeAmount" style="text-align:right" scope="col"></th></tr><tr><th scope="col-md-4">TAKE AWAY</th><th id="takeAwayAmount"style="text-align:right" scope="col"></th></tr> -->
+                      <tr>
+                        <th scope="col-md-4">GRAND TOTAL</th>
+                        <th id="SplitgrandTotalAmount" style="text-align:right" scope="col">0.00</th>
+                      </tr>
+                      <!--                   <tr><td>Peter</td><td>Griffin</td></tr> -->
+                    </thead>
+                  </table>
+                </div>
+              </div>
+            </div>
+            <div id="myModal2" style="background-color: white" class="modal2">
+              <div class="modal-content2">
+                <div class="LeftSidePayment">
+                  <i style="font-size: 20px" class="close2 bi bi-caret-left-fill mb-4"></i>
+                  <!-- <div id="PasteDiv2" style="margin-top: 35px;width: 320px" class="parent card-body"></div> -->
+                 <table id="TransactionTablePayScreen" class="table" style="width:100%; height: 60%; overflow-y: scroll; display: block;">
+                    <thead>
+                      <tr>
+                        <th style="width: 150px" scope="col">Name</th>
+                        <th style="width: 110px" scope="col">QTY</th>
+                        <th style="text-align:right" scope="col">Amount</th>
+                      </tr>
+                    </thead>
+                    <tbody></tbody>
+                  </table>
+                  <!-- <div id="PasteDiv3" style="height: 200px;width: 320px; position: relative; margin-top: -10px;display: block;overflow-y:scroll;"></div><div id="PasteCalculationDiv" style="display:block; bottom: 75px;position: absolute;max-height:150px;width: 300px"></div> -->
+                  <div id="CalculationDIVPayScreen" style="display:block;bottom: 75px;position: absolute;max-height:150px;width: 310px">
+                    <table id="CalculationTablePayScreen" style="width: 100%; max-height: 10px" class="table">
+                      <thead>
+                        <tr>
+                          <th scope="col-md-4">SUBTOTAL</th>
+                          <th style="text-align:right" id="subtotalAmountPayScreen">0.00</th>
+                        </tr>
+                        <!--   <tr><th scope="col-md-4"><a style="font-weight: BOLD;color: #F2D857">DISCOUNT</a></th><th id="discountAmountPayScreen" style="text-align:right" scope="col">0.00</th></tr> -->
+                        <tr>
+                          <th scope="col-md-4">TAX</th>
+                          <th style="text-align: right" id="gstAmountPayScreen" scope="col">0.00</th>
+                        </tr>
+                        <!--                    <tr><th scope="col-md-4">SERVICE CHARGE</th><th id="seriveChargeAmount" style="text-align:right" scope="col"></th></tr><tr><th scope="col-md-4">TAKE AWAY</th><th id="takeAwayAmount"style="text-align:right" scope="col"></th></tr> -->
+                        <tr>
+                          <th scope="col-md-4">GRAND TOTAL</th>
+                          <th id="grandTotalAmountPayScreen" style="text-align:right" scope="col">0.00</th>
+                        </tr>
+                        <!--                   <tr><td>Peter</td><td>Griffin</td></tr> -->
+                      </thead>
+                    </table>
+                  </div>
+                </div>
+                <div id="PayRightSidePanel2" style="display: none; align-items: center;">
+                  <div class="PaidStyle">
+                    <div style="align-items: center;text-align: center;">
+                      <img style="text-align: center;margin: auto;" width="40%" height="40%" src="assets/img/PaidIcon.png">
+                      <h1>Total Paid <span id="paidAmount">0.00</span>
+                      </h1>
+                      <img width="80%" height="40%" src="assets/img/contact.png">
+                    </div>
+                    <button onclick="newOrderBtnClicked()" style="width: 100%; background-color: #F2D857;font-weight: bolder;font-size: 20px;border: none;color: white;border-radius: 8px;height: 45px;">New Order</button>
+                  </div>
+                </div>
+                <div id="PayRightSidePanel1">
+                  <div class="PayRightSideStyle">
+                    <h1 id="TotalAmountToPay" style="text-align: center;">0.00</h1>
+                    <div class="parent">
+                      <i style="font-size: 35px;margin-right:10px" class="bi bi-wallet"></i>
+                      <input id="CashInput"  class="mr-4 CashInputStyle"></input>
+                      <button onclick="exactBtnClicked()" class="exactBtn" style="margin-left:15px; width: 151px; background-color: #F2D857;font-weight: bolder;font-size: 20px;border: none;color: white;border-radius: 8px;height: 45px;">Exact</button>
+                    </div>
+                    <div class="parent  gap10">
+                      <button class="btn-outline">15</button>
+                      <button class="btn-outline">20</button>
+                      <button class="btn-outline">30</button>
+                    </div>
+                  </div>
+                  <br>
+                  <div style="margin-top: 49px;/* margin-left: 20px; */ width: 650px; float:left">
+                    <ul class="list-group">
+                      <li style="font-size: 22px;font-size: bolder" class="list-group-item">
+                        <i class="bi bi-credit-card-2-back"></i>
+                        </i> Credit Card
+                      </li>
+                      <li style="font-size: 22px;font-size: bolder" class="list-group-item">
+                        <i class="bi bi-credit-card-2-back"></i>
+                        </i> Debit Card
+                      </li>
+                      <li style="font-size: 22px;font-size: bolder" class="list-group-item">
+                        <i class="bi bi-credit-card-2-front-fill"></i>
+                        </i> Mobile E-Wallet
+                      </li>
+                      <li style="font-size: 22px;font-size: bolder" class="list-group-item">
+                        <i class="bi bi-wallet2"></i> Customer E-Wallet
+                      </li>
+                    </ul>
+                    <!-- End List group With Icons -->
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="sidebartable">
+            <!--  <a href="javascript:void(0)" style="visibility: hidden;" id="closebtnVSBLTY" class="closebtn" onclick="closeNav()">×</a> -->
+
+            <ul id="TableItem" style="position: relative;z-index:1; margin-top: 15px;margin-left: 12px;" class="nav sidebar-nav " id="sidebar-nav"></ul>
+            <!-- <button id="openbtnVSBLTY" class="openbuttn" onclick="openNav()"><i style="font-size: 20px" class="bi bi-caret-right-fill"></i></button>  -->
+          </div>
+          <!-- Left side columns -->
+        <div id="Tab-Mobile" class="tab-content">
+          <a id="1" class="MblCategory" value="1">Main Dishes</a>
+          <a id="2" class="MblCategory" value="2">Side Dishes</a>
+          <a id="3" class="MblCategory" value="3">Hot Drinks</a>
+          <a id="4" class="MblCategory" value="4">Cold Drinks</a>
+          <a id="5" class="MblCategory" value="5">Desserts</a>
+        </div>
+          <div id="div1" class="divFoodItem">
+            <!--  <div id="test1" onclick="Item1Clicked()" style="max-width: 150px"><div class="card info-card revenue-card"><div class="card-body"><img id ="drink1ImgSourcePath" src="assets/img/j1.png" class="card-img-top" alt="..."><h5 id="drink1price" class="top-right">MYR 7</h5><h5 id="drink1name"class="img-title">Pomegranate Juice</h5></div></div></div> -->
+          </div>
+          <!-- End Left side columns -->
+
+
+                <!-- Trigger/Open The tableModal -->
+
+                <!-- The tableModal -->
+                <div id="mytableModal" class="tableModal" style="display: none">
+
+                  <!-- tableModal content -->
+                  <div class="tableModal-content">
+                    <span id="tableSpan" class="closeTable">&times;</span>
+                    <div style="margin-top:50px">
+                      <h2 style="text-align: center;">Select Table</h2>
+                      <div style="display: flex;gap:15px;margin-top: 20px">
+                        <div class="tableCircle" value="1">
+                          <h4>1</h4>
+                           <div class="inside-circle">
+                          <p>0/4 </p>
+                          <i class="bi bi-person-fill"></i>
+                          </div>
+                        </div>
+
+                      <div class="tableCircle" value="2">
+                          <h4>2</h4>
+                            <div class="inside-circle">
+                          <p>0/4 </p>
+                          <i class="bi bi-person-fill"></i>
+                          </div>
+                      </div>
+                      <div class="tableCircle" value="3">
+                          <h4>3</h4>
+                             <div class="inside-circle">
+                          <p>0/2 </p>
+                          <i class="bi bi-person-fill" value="4"></i>
+                          </div>
+                      </div>
+                      <div class="tableCircle" value="4">
+                          <h4>4</h4>
+                            <div class="inside-circle">
+                          <p>0/4 </p>
+                          <i class="bi bi-person-fill"></i>
+                          </div>
+                      </div>
+               
+                      </div>
+                    </div>
+                  </div>
+                </div>
+          <!-- Right side columns -->
+          <div id="Right-Side-Column" class="column-rs">
+            <!-- Recent Activity -->
+            <i  style="margin-left:15px;margin-top:15px;font-size: 26px;font-weight: bolder;" class="text-black bi bi-arrow-left"></i>
+            <div id="CopyDiv2" class="p-3 parent">
+              <span class="child">
+                <i style="font-size: 26px;font-weight: bolder;" class="text-black bi bi-person-circle"></i>
+              </span>
+              <h4 style="margin-top: -10px;" class="child card-title">Add Customer</h4>
+              <a class="child icon" href="#">
+                <i style="font-size: 26px;font-weight: bolder;" class="text-black bi bi-plus-circle"></i>
+              </a>
+            </div>
+            <div id="CopyDiv3" class="CopyDiv3">
+              <table id="TransactionTable" class="table">
+                <thead>
+                  <tr id="TransactionTR" style="background: white">
+                    <th  scope="col">Name</th>
+                    <th scope="col">QTY</th>
+                    <th scope="col">Amount</th>
+                  </tr>
+                </thead>
+                <tbody></tbody>
+              </table>
+            </div>
+            <div id="NoDataToShow" style="text-align:center; display: block;overflow-y:scroll;">
+              <h4>NO DATA AVAILABLE</h4>
+            </div>
+            <div id="CalculationDIV" class="CalculationDIV">
+              <table id="CalculationTable" style="width: 100%; max-height: 10px" class="table">
+                <thead>
+                  <tr>
+                    <th scope="col-md-4">SUBTOTAL</th>
+                    <th style="text-align:right" id="subtotalAmount">0.00</th>
+                  </tr>
+                  <tr>
+                    <th scope="col-md-4">
+                      <a id="myBtn" style="font-weight: BOLD;color: #F2D857">DISCOUNT</a>
+                    </th>
+                    <th id="discountAmount" style="text-align:right" scope="col">0.00</th>
+                  </tr>
+                  <tr>
+                    <th scope="col-md-4">TAX</th>
+                    <th style="text-align: right" id="gstAmount" scope="col">0.00</th>
+                  </tr>
+                  <!--                    <tr><th scope="col-md-4">SERVICE CHARGE</th><th id="seriveChargeAmount" style="text-align:right" scope="col"></th></tr><tr><th scope="col-md-4">TAKE AWAY</th><th id="takeAwayAmount"style="text-align:right" scope="col"></th></tr> -->
+                  <tr>
+                    <th scope="col-md-4">GRAND TOTAL</th>
+                    <th id="grandTotalAmount" style="text-align:right" scope="col">0.00</th>
+                  </tr>
+                  <!--                   <tr><td>Peter</td><td>Griffin</td></tr> -->
+                </thead>
+              </table>
+            </div>
+            <div class="btnBottom" class="card-body">
+              <button id="payButtonClicked" style="min-width: 160px;background-color: #F2D857;font-weight: bolder;font-size: 20px;" type="button" class="text-black btn btn-warning">Pay</button>
+              <button onclick="sendBtnClicked()" style="min-width: 160px;background-color:#F2D857;font-weight: bolder;font-size: 20px;" type="button" class="btn  btn-warning">Send</button>
+            </div>
+            <div id="myModal6" class="closeKitchenMSG modal6 modal-small">
+              <div style="text-align: center;" class="modal-content6">
+                <h4 style="margin-top:100px;">Order sent to kitchen!</h4>
+              </div>
+            </div>
+          </div>
+          <!-- End Recent Activity -->
+    </div>
+    <!-- End Right side columns -->
+    </div>
+            <!--  <button onclick="playVid()" type="button" class="btn-primary">Play Video</button> -->
+        <div id="myModal7" class="modal7">
+          <div style="text-align: center;">
+            <video id="myVideo"  class="modal-content7">
+              <source src="assets/vdo/animation.MP4" type="video/mp4">
+              <!-- Your browser does not support HTML5 video. -->
+            </video>
+          </div>
+        </div>
+
+
+
+                  <!-- The Modal -->
+          <div id="myModal" class="modal rounded">
+            <!-- Modal content -->
+            <div class="modal-content">
+              <!-- <p style="visibility: hidden;" class="close">&times;</p> -->
+              <span class="close" style=" color:black; font-weight:bolder; padding: 10px; background-color: #F2D857;text-align: center;">Full Bill Discount</span>
+              <div style=" padding: 0px; margin-top: -3px; flex-direction: row; align-content: center;text-align: center;">
+                <img class="ImazeSize" src="assets/img/DiscountImg.png" alt="...">
+                <input required minlength="2" maxlength="2" id="discountInput" placeholder="0%" class="discountInputStyle" type="number">
+                <img class="ImazeSize" src="assets/img/DiscountImgPer.png" alt="...">
+              </div>
+              <input style="height: 320px; margin-top: -6px; border:none;width: 100%; background: white; text-align: left;left:0px; " placeholder="Add note" width:100%></input>
+              <button onclick="SaveButtonClicked()" style="margin: auto; text-align: center; align-items: center; min-width: -204px;background-color: #F2D857;font-weight: bolder;font-size: 20px;width: 40%;border-radius: 22px;" class="btn btn-warning mb-4 mt-2">SAVE</button>
+            </div>
+          </div>
+
+          <div id="modalSelection" class="modalSelection">
+
+            <div class="logoSection">
+            <label id="logonew" name="logonew" class="logonew"></label>
+            </div>
+            <div class="SelectionPanel">
+                 <div class="box retail">
+                <img src="./assets/img/retail.png">
+                <div class="box-content">
+                    <h3 class="title">Retail</h3>
+                   <!--  <span class="post">Web designer</span> -->
+                </div>
+            </div>
+
+                        <div class="box customer">
+                <img src="./assets/img/customer.png">
+                <div class="box-content">
+                    <h3 class="title">Customer</h3>
+                   <!--  <span class="post">Web designer</span> -->
+                </div>
+            </div>
+        </div>
+       
+
+         
+          </div>
+    </section>
+    </main>
+    <!-- End #main -->
+    <a href="#" class="back-to-top d-flex align-items-center justify-content-center">
+      <i class="bi bi-arrow-up-short"></i>
+    </a>
+    <!-- Vendor JS Files -->
+    <script src="assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+    <!-- Template Main JS File -->
+    <script src="assets/js/main.js"></script>
+    </div>
+  </body>
+</html>
+
+<script src="https://code.jquery.com/jquery-3.5.0.js"></script>
+<script src="./assets/js/functions.js"></script>
+
+
+
+
